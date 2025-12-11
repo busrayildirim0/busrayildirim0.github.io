@@ -1,467 +1,278 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Büşra Yıldırım - Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23667eea'>B</text></svg>">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* --- GLOBAL SETTINGS (White & Chic Theme) --- */
+        :root {
+            --bg-color: #ffffff;
+            --bg-alt: #f8fafc; 
+            --text-main: #334155; 
+            --text-dark: #0f172a; 
+            --accent: #2563eb; 
+            --border: #e2e8f0; 
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-main); 
+            background-color: var(--bg-color); 
         }
 
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        /* --- NAVBAR --- */
+        .navbar { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+            color: var(--text-dark); 
+            text-transform: uppercase;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { 
+            color: #64748b; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 0.95rem;
+            transition: all 0.3s ease; 
+        }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .mobile-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .mobile-menu span { width: 25px; height: 2px; background: var(--text-dark); transition: 0.3s; }
+
+        /* --- SECTIONS --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 6rem 0; min-height: 80vh; display: flex; align-items: center; }
+        
+        /* Alternating backgrounds */
+        #home, #projects, #work, #contact { background: var(--bg-color); }
+        #skills, #education { background: var(--bg-alt); }
+
+        /* --- HERO SECTION --- */
+        .hero { text-align: center; padding-top: 8rem; min-height: 90vh; }
+        .hero h1 { 
+            font-size: 4rem; 
+            margin-bottom: 0.5rem; 
+            color: var(--text-dark); 
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero .subtitle { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--accent); 
+            font-weight: 600;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        .hero .description { 
+            font-size: 1.25rem; 
+            margin-bottom: 2.5rem; 
+            max-width: 750px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            color: #475569; 
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Hero Buttons Wrapper */
+        .hero-buttons {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #546fe8;
+        /* --- BUTTONS --- */
+        .btn { 
+            display: inline-block; 
+            padding: 0.9rem 2rem; 
+            background: var(--text-dark); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            border: 2px solid var(--text-dark);
         }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #151d2c;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
+        .btn:hover { 
+            background: transparent; 
+            color: var(--text-dark); 
             transform: translateY(-2px);
         }
 
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--text-dark);
+            background: transparent;
+            color: var(--text-dark);
         }
 
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
+        /* --- HEADINGS --- */
+        .section-title { 
+            font-size: 2.5rem; 
+            text-align: center; 
+            margin-bottom: 1rem; 
+            color: var(--text-dark); 
+            letter-spacing: -0.5px;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 4rem;
+        }
+
+        /* --- CARDS (Skills & Projects) --- */
+        .skills-grid, .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2.5rem; 
+        }
+
+        .skill-card, .project-card, .timeline-content, .education-card {
             background: white;
-            margin: 3px 0;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        .skill-card:hover, .project-card:hover, .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 { color: var(--text-dark); margin-bottom: 1rem; font-size: 1.25rem; }
+        .skill-card p { font-size: 0.95rem; color: #475569; }
+
+        /* --- PROJECT SPECIFIC --- */
+        .project-card { display: flex; flex-direction: column; height: 100%; }
+        .project-image { 
+            font-size: 3rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--accent);
+        }
+        .project-content { flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { color: var(--text-dark); margin-bottom: 1rem; line-height: 1.3; font-size: 1.2rem; }
+        .project-content p { font-size: 0.95rem; margin-bottom: 1.5rem; text-align: justify; color: #475569; }
+        .project-btn { 
+            margin-top: auto; 
+            align-self: flex-start; 
+            color: var(--accent); 
+            font-weight: 600; 
+            text-decoration: none; 
+            border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
+        .project-btn:hover { border-bottom-color: var(--accent); }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 5rem 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero {
-            background: white;
-            color: #1e293b;
-            text-align: center;
-        }
-
-        .hero-content {
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #1e293b;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgb(79, 74, 231);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1e293b;
+        /* --- TIMELINE (Work History) --- */
+        .work-grid { display: flex; flex-direction: column; gap: 2rem; max-width: 900px; margin: 0 auto; }
+        
+        .timeline-card {
             position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
         }
-
-        .section-title:after {
+        
+        .timeline-card::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #667eea;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .skill-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .project-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
-        }
-
-        .education-grid,
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .timeline-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #667eea;
-        }
-
-        .timeline-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .timeline-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .timeline-card h4 {
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-card .date {
-            color: #64748b;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #374151;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
             border-radius: 50%;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
         }
 
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+        .timeline-content h3 { color: var(--text-dark); font-size: 1.4rem; margin-bottom: 0.2rem; }
+        .timeline-content h4 { color: #64748b; font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .date { 
+            display: inline-block; 
+            background: #eff6ff; 
+            color: var(--accent); 
+            padding: 0.2rem 0.8rem; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            margin-bottom: 1rem; 
         }
+        .timeline-content p { text-align: justify; font-size: 0.95rem; }
+        .timeline-content ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+        .timeline-content li { margin-bottom: 0.3rem; font-size: 0.95rem; color: #475569; }
 
-        .contact-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .email-btn {
-            flex: 1;
+        /* --- SOCIAL LINKS --- */
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
+        .social-link { 
+            color: var(--text-main); 
+            transition: 0.3s; 
             padding: 1rem;
-            background: #10b981;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            display: block;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .social-link:hover { color: var(--accent); border-color: var(--accent); background: #eff6ff; }
+
+        /* --- FOOTER --- */
+        .footer { 
+            background: white; 
+            color: #64748b; 
+            text-align: center; 
+            padding: 3rem 0; 
+            border-top: 1px solid var(--border); 
+            font-size: 0.9rem;
         }
 
-        .email-btn:hover {
-            background: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(16,185,129,0.3);
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-        .footer {
-            background: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        #skills, #projects, #education, #work, #events, #contact {
-            background: #f8fafc;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .timeline:before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 4rem !important;
-                padding-right: 0 !important;
-                text-align: left !important;
-            }
-
-            .timeline-item .timeline-content:before {
-                left: -3.7rem !important;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .education-grid,
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .timeline-card { padding-left: 1rem; border: none; }
+            .timeline-card::before { display: none; }
+            .section { padding: 4rem 0; }
+            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Büşra Yıldırım</div> <!-- Buraya adınızı yazın -->
+            <div class="logo">Büşra Yıldırım</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#work">Experience</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#work">Work History</a></li>
-
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -472,174 +283,174 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
     <section id="home" class="section hero">
         <div class="container">
             <div class="hero-content">
-                <h1>I'm BÜŞRA 👋</h1> <!-- Buraya adınızı yazın -->
-                <p class="subtitle">Software Engineer </p> <!-- Örnek: Software Engineer & AI Enthusiast -->
+                <h1>Hi, I'm Büşra 👋</h1>
+                <p class="subtitle">Software Engineer & AI Researcher & Data Scientist</p>
                 <p class="description">
-                   I am a software engineer shaping the future with machine learning, data science, and data analysis projects, while also building innovative solutions as a full stack developer. <!-- Örnek: Yazılım geliştirme ve yapay zeka alanında uzmanlaşmış, yenilikçi çözümler üreten bir mühendisim. -->
+                    I am a software engineer shaping the future with machine learning, data science, and data analysis projects, while also building innovative solutions as a full stack developer.
                 </p>
-                <a href="#contact" class="btn">Contact Me</a>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="https://www.linkedin.com/in/busrayildirim00/" target="_blank" class="btn btn-outline">LinkedIn</a>
+                    <a href="https://github.com/busrayildirim0" target="_blank" class="btn btn-outline">GitHub</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title">What I Do</h2>
-            <p style="text-align: center; font-size: 1.2rem; color: #64748b; margin-bottom: 3rem;">
-                 My expertise and areas of work
-            </p>
+            <p class="section-subtitle">My expertise and areas of work</p>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3> AI & Machine Learning </h3> <!-- Örnek: Frontend Development -->
-                    <p> I specialize in AI and Machine Learning, with hands-on experience in developing predictive models, training deep learning algorithms, and applying advanced data analysis techniques to solve real-world problems. My focus is on building intelligent systems that transform raw data into actionable insights, driving innovation and smarter decision-making.</p> <!-- Örnek: Modern web teknolojileri kullanarak kullanıcı dostu arayüzler geliştiriyorum. React, Vue.js ve Angular ile deneyimim bulunmaktadır. -->
+                    <h3>AI & Machine Learning</h3>
+                    <p>I specialize in AI and Machine Learning, with hands-on experience in developing predictive models, training deep learning algorithms, and applying advanced data analysis techniques to solve real-world problems. My focus is on building intelligent systems that transform raw data into actionable insights, driving innovation and smarter decision-making.</p>
                 </div>
                 <div class="skill-card">
-                    <h3> Full Stack Development </h3> <!-- Örnek: Backend Development -->
-                    <p> I have strong experience in Full Stack Development, working with Java, C#, .NET, and ASP.NET to build scalable, secure, and high-performance applications. My expertise covers both frontend and backend development, including designing robust APIs, implementing efficient databases, and creating user-friendly interfaces that ensure seamless user experiences.</p>
+                    <h3>Full Stack Development</h3>
+                    <p>I have strong experience in Full Stack Development, working with Java, C#, .NET, and ASP.NET to build scalable, secure, and high-performance applications. My expertise covers both frontend and backend development, including designing robust APIs, implementing efficient databases, and creating user-friendly interfaces that ensure seamless user experiences.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Software Development & Engineering Principles</h3> <!-- Örnek: Machine Learning -->
+                    <h3>Software Engineering Principles</h3>
                     <p>Strong foundation in Software Development Life Cycle (SDLC), Object-Oriented Programming (OOP), and Unit Testing (JUnit). Focused on writing clean, maintainable, and scalable code while following best practices in software engineering.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Data Science & Data Analysis</h3> <!-- Örnek: Database Design -->
+                    <h3>Data Science & Analysis</h3>
                     <p>Experienced in working with Python, SQL, and MATLAB for data analysis, preprocessing, and visualization. Skilled in applying statistical methods, handling large datasets, and leveraging machine learning frameworks such as TensorFlow, Keras, and PyTorch to extract insights and build predictive models.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Projects</h2>
-            <p style="text-align: center; font-size: 1.2rem; color: #64748b; margin-bottom: 3rem;">
-                Some of the projects I've developed recently
-            </p>
+            <p class="section-subtitle">A selection of my recent technical work</p>
             <div class="projects-grid">
+                
                 <div class="project-card">
-                    <div class="project-image">🚀</div>
+                    <div class="project-image">⚛️</div>
                     <div class="project-content">
-                        <h3>AI & Machine Learning Researcher in Particle Physics | Neutrino Interaction Modeling & Simulation</h3>
-                        <p>Contributed to a research project integrating AI with experimental particle physics by generating simulation data with GiBUU and GEANT4, specifically modeling neutrino interactions. Designed and optimized machine learning models—such as CNNs, DNNs, and XGBoost—for charged-current (CC) and neutral-current (NC) event classification. Applied advanced preprocessing techniques including noise filtering, dimensionality reduction, and feature extraction from large-scale detector outputs. Leveraged Python, NumPy, pandas, and scikit-learn for data handling, and used Matplotlib and Seaborn for scientific visualization. This work enhanced pattern recognition in raw detector data, enabling more accurate and efficient neutrino event classification while demonstrating the potential of AI-driven approaches in high-energy physics.</p>
-                        <a href="[GITHUB_LINKI]" class="project-btn" target="_blank">View on GitHub</a>
+                        <h3>Signal and Background Separation in the MicroBooNE Experiment</h3>
+                        <p>Improved the cosmic-ray background rejection pipeline for the MicroBooNE Liquid Argon Time Projection Chamber (LArTPC) experiment, which operates at the surface and experiences high cosmic-ray contamination. Utilized the Wire-Cell Toolkit for 3D tomographic reconstruction to convert raw wire signals into high-quality 3D charge images. Developed and trained the primary classifier using a Boosted Decision Tree (BDT) with XGBoost, engineered from high-level physics-based features. Researched semantic segmentation CNNs for 3D reconstruction tasks.</p>
+                        <a href="https://github.com/busrayildirim0" class="project-btn" target="_blank">View on GitHub &rarr;</a>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-image">💻</div>
+                    <div class="project-image">💬</div>
                     <div class="project-content">
-                        <h3>Computer Vision Engineer | UAV vs. Bird Detection with YOLOv8 & PyTorch</h3>
-                        <p>Developed a computer vision project focused on differentiating UAVs from birds using deep learning–based image classification and object detection. Built a real-time detection pipeline with YOLOv8 and PyTorch, trained on a custom-labeled dataset of aerial bird species and UAV types. Designed a complete workflow including data annotation, model training, and inference pipeline development. Integrated OpenCV and Flask to create a user-friendly web interface where users can upload images, run the trained YOLO model, and obtain bounding boxes with class labels. This project demonstrates expertise in modern object detection techniques, real-time inference optimization, and full-stack deployment of AI-driven applications.</p>
-                        <a href="https://github.com/busrayildirim0/bird-uav-detection" class="project-btn" target="_blank">View on GitHub</a>
+                        <h3>Vertex – Real-Time Team Communication Platform</h3>
+                        <p>A Slack-style team communication platform built with .NET 8, C#, Entity Framework Core, and Clean Architecture. Architected with a modular domain-driven structure enabling users to manage channels and collaborate securely via a scalable multi-layer backend. Implemented clean separation of concerns, designed relational data models, applied DTO mapping, and secured the system with robust JWT-based authentication. Demonstrates ability to design scalable backend services and deliver production-quality RESTful APIs.</p>
+                        <a href="https://github.com/busrayildirim0/VERTEX" class="project-btn" target="_blank">View on GitHub &rarr;</a>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-image">📱</div>
+                    <div class="project-image">🍎</div>
                     <div class="project-content">
-                        <h3>Full Stack Developer | Real-Time Team Communication Platform (Vertex)</h3>
-                        <p>Developed Vertex, a real-time team communication platform inspired by Slack, supporting user registration, authentication, and instant messaging in chat rooms. Built the backend with ASP.NET Core 8, leveraging SignalR and WebSockets for scalable, event-driven communication. Implemented the frontend with vanilla JavaScript for dynamic client-side interactions, seamlessly integrated with the SignalR hub to deliver real-time message updates. Designed and managed persistent data storage using SQL Server and Entity Framework Core with a code-first migration approach, ensuring data integrity and scalability. This project demonstrates expertise in full stack development, real-time systems, and enterprise-grade software architecture.</p>
-                        <a href="https://github.com/busrayildirim0/VERTEX" class="project-btn" target="_blank">View on GitHub</a>
+                        <h3>HealthScan AI – AI-Powered Ingredient Analyzer</h3>
+                        <p>Developed an AI tool to scan and analyze food ingredient lists, providing users with summaries, evaluations, and dietary flags (e.g., gluten-free). Implemented a pipeline utilizing EasyOCR for text extraction from images. Employed an LLM to analyze the extracted text, interpret complex ingredients, and generate user-friendly insights. Cross-referenced ingredients against a custom-built database to ensure high-accuracy labeling and evaluation.</p>
+                        <a href="https://github.com/busrayildirim0" class="project-btn" target="_blank">View on GitHub &rarr;</a>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-image">💻</div>
+                    <div class="project-image">🚗</div>
                     <div class="project-content">
-                        <h3>AI Engineer | Advanced License Plate & Vehicle Recognition with YOLOv8</h3>
-                        <p>Developed an AI-powered vehicle and license plate recognition system using Python 3.8+ with YOLOv8x and PyTorch for custom-trained object detection models. Integrated OpenCV for image and video processing, and deployed a Flask-based web interface with HTML5 and CSS3 for real-time user interaction. Trained and optimized models on Google Colab to improve detection accuracy and system robustness. Designed to support applications such as intelligent traffic monitoring, parking management, and automated vehicle identification, this system demonstrates expertise in computer vision, real-time AI deployment, and full-stack integration of deep learning models.</p>
-                        <a href="https://github.com/busrayildirim0/Car_Plate_Detection_System" class="project-btn" target="_blank">View on GitHub</a>
+                        <h3>Advanced License Plate Recognition System</h3>
+                        <p>Developed an AI-driven system for real-time vehicle and license plate detection, supporting traffic monitoring and parking management. Led the model development pipeline: performed custom data collection and labeling, selected, and trained a YOLOv8x model using PyTorch. Systematically improved model accuracy using data augmentation techniques and deployed the service with a Flask and OpenCV web interface.</p>
+                        <a href="https://github.com/busrayildirim0/Car_Plate_Detection_System" class="project-btn" target="_blank">View on GitHub &rarr;</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-           <div class="education-grid">
-                <div class="timeline-card">
-                        <h3>Erciyes University</h3>
-                        <h4>Software Engineering(Eng.) - Bachelor Degree</h4>
-                        <p class="date">2022 - 2027</p>
-                        <p>GPA 3.15 </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work History Section -->
     <section id="work" class="section">
         <div class="container">
             <h2 class="section-title">Work History</h2>
+            <p class="section-subtitle">My professional journey</p>
             <div class="work-grid">
+                
                 <div class="timeline-card">
                     <div class="timeline-content">
-                        <h3>Intern	Researcher</h3>
-                        <h4>TÜBİTAK	2247-C	Intern	Researcher	Scholarship	Program</h4>
-                        <p class="date">10/03/2025 - 09/09/2025</p>
-                        <p>Project	Title:	Artificial	Intelligence	Techniques	to	Improve	Neutrino	Physics	Analysis
- Project	Supervisor:		Assoc.	Prof.	Dr.	Emrah	Tiraş
- Institution:	Erciyes	University
- Contributed to a research project integrating AI with experimental particle physics. Generated and processed simulation data using tools such as GiBUU
- and GEANT4, focusing on neutrino interaction modeling. Performed extensive data	preprocessing, including noise filtering, dimensionality reduction,
- and feature extraction from high-volume detector outputs. Developed and evaluated machine learning models—particularly DNNs, CNNs, and XGBoost
- —to classify neutrino interaction types and identify rare physics events. Applied Python, NumPy, pandas, and scikit-learn for data manipulation and
- modeling, and leveraged Matplotlib and Seaborn	for scientific visualization. This work enhanced pattern recognition capabilities in raw detector data,
- contributing to more efficient and accurate neutrino event classification.</p>
+                        <h3>Research Scholarship Holder</h3>
+                        <h4>TÜBİTAK 3501 Career Development Program</h4>
+                        <span class="date">11/11/2025 – 30/11/2026</span>
+                        <p><strong>Project Title:</strong> Development and Application of Artificial Intelligence Methods for Complex Problems in Neutrino Interactions<br>
+                        <strong>Institution:</strong> Erciyes University<br><br>
+                        Awarded a research fellowship to develop and apply advanced AI methods to address complex challenges in neutrino physics analysis.</p>
                     </div>
                 </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-content">
+                        <h3>Intern Researcher</h3>
+                        <h4>TÜBİTAK 2247-C Intern Researcher Scholarship Program</h4>
+                        <span class="date">10/03/2025 - 09/09/2025</span>
+                        <p><strong>Project: Artificial Intelligence Techniques to Improve Neutrino Physics Analysis</strong><br>
+                        Contributed to a research project integrating AI with experimental particle physics. Generated and processed simulation data using tools such as GiBUU and GEANT4, focusing on neutrino interaction modeling. Performed extensive data preprocessing, including noise filtering, dimensionality reduction, and feature extraction from high-volume detector outputs. Developed and evaluated machine learning models—particularly DNNs, CNNs, and XGBoost—to classify neutrino interaction types and identify rare physics events.</p>
+                    </div>
+                </div>
+
                 <div class="timeline-card">
                     <div class="timeline-content">
                         <h3>Undergraduate Researcher</h3>
-                        <h4>Erciyes	Neutrino Research Group</h4>
-                        <p class="date">05/2024 - Present </p>
-                        <p>Applied machine learning techniques to CERN and Fermilab neutrino data, focusing on signal denoising and accurate classification of interaction
- events using AI-driven models. </p>
+                        <h4>Erciyes Neutrino Research Group</h4>
+                        <span class="date">05/2024 - Present</span>
+                        <p>Applied machine learning techniques to CERN and Fermilab neutrino data, focusing on signal denoising and accurate classification of interaction events using AI-driven models.</p>
                     </div>
                 </div>
+
                 <div class="timeline-card">
                     <div class="timeline-content">
-                        <h3> Principal Investigator</h3>
-                        <h4> TÜBİTAK 2209-A University Students Research Projects Support Program</h4>
-                        <p class="date">(2024/1 Term) </p>
-                        <p>Project	Title:	Signal	and	Background	Separation	in	Neutrino	Interactions	Using	Artificial	Intelligence	Methods
- Supervisor:	Assoc.	Prof.	Dr.	Emrah	Tıraş
- Leading a research project applying advanced AI models (e.g., DNNs, CNNs, XGBoost) to separate signal from background in neutrino interaction data
- generated via Geant4 simulations. Focused on data preprocessing, noise reduction, and accurate event classification to enhance analysis in high
-energy physics.</p>
+                        <h3>Principal Investigator</h3>
+                        <h4>TÜBİTAK 2209-A Research Projects</h4>
+                        <span class="date">2024/1 Term</span>
+                        <p><strong>Project: Signal and Background Separation in Neutrino Interactions Using AI</strong><br>
+                        Leading a research project applying advanced AI models (e.g., DNNs, CNNs, XGBoost) to separate signal from background in neutrino interaction data generated via Geant4 simulations.</p>
                     </div>
                 </div>
+
                 <div class="timeline-card">
                     <div class="timeline-content">
-                        <h3>  Artificial Intelligence Intern</h3>
+                        <h3>Artificial Intelligence Intern</h3>
                         <h4>Yazilim.xyz</h4>
-                        <p class="date">01/08/2024 - 01/09/2024 </p>
-                        <p>I am working on a computer	vision project focused on UAV vs. bird detection. I developed an AI-based image classification and object detection
- pipeline that visually distinguishes between drones and birds. The system is built using YOLOv8	for real-time object detection and PyTorch	as the
- deep learning framework. I trained the model on a custom-labeled dataset containing aerial images of various bird species and UAV types. The
- application allows users to upload images through a user-friendly interface, processes them using the trained YOLO model, and outputs bounding
- boxes and class labels to determine whether the object is a bird or a drone. Key components include data annotation, model training, inference
- pipeline design, and deployment with OpenCV	and Flask for interactive use.</p>
+                        <span class="date">01/08/2024 - 01/09/2024</span>
+                        <p>Worked on a computer vision project focused on UAV vs. bird detection. Developed an AI-based image classification and object detection pipeline using YOLOv8 for real-time object detection and PyTorch as the deep learning framework.</p>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-card timeline-content">
+                    <h3>Erciyes University</h3>
+                    <h4>Software Engineering (Eng.) - Bachelor Degree</h4>
+                    <span class="date">2022 - 2027</span>
+                    <p><strong>GPA: 3.15</strong></p>
+                    <p>Focusing on Data Science, Algorithm Analysis, and Software Architectures.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Get in touch with me</p>
             
-            <!-- Social Links -->
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/busrayildirim00/" class="social-link" target="_blank" title="LinkedIn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -657,13 +468,15 @@ energy physics.</p>
                     </svg>
                 </a>
             </div>
+            <div style="text-align: center; margin-top: 1rem; color: #64748b;">
+                busrayildirim6307@gmail.com
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Busra Yildirim. All rights reserved.</p>
+            <p>&copy; 2025 Büşra Yıldırım. All rights reserved.</p>
         </div>
     </footer>
 
@@ -678,22 +491,33 @@ energy physics.</p>
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks.style.display === 'flex') {
+                         navLinks.style.display = 'none';
+                    }
                 }
             });
         });
 
-        // Mobile menu toggle (basit versiyon)
+        // Mobile menu toggle
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Form gönderildi! (Bu sadece bir demo, gerçek form işlevselliği için backend gereklidir)');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '72px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = '#ffffff';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderBottom = '1px solid #e2e8f0';
+            }
         });
 
         // Scroll animations
@@ -711,10 +535,9 @@ energy physics.</p>
             });
         }, observerOptions);
 
-        // Animate cards on scroll
-        document.querySelectorAll('.skill-card, .project-card, .timeline-item').forEach(el => {
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
+            el.style.transform = 'translateY(40px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
