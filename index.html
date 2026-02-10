@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Büşra Yıldırım - Portfolio</title>
     <style>
-        /* --- GLOBAL SETTINGS (White & Chic Theme) --- */
         :root {
             --bg-color: #ffffff;
             --bg-alt: #f8fafc; 
@@ -24,7 +23,6 @@
             background-color: var(--bg-color); 
         }
 
-        /* --- NAVBAR --- */
         .navbar { 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px);
@@ -58,15 +56,12 @@
         .mobile-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
         .mobile-menu span { width: 25px; height: 2px; background: var(--text-dark); transition: 0.3s; }
 
-        /* --- SECTIONS --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .section { padding: 6rem 0; min-height: 80vh; display: flex; align-items: center; }
         
-        /* Alternating backgrounds */
         #home, #projects, #work, #contact { background: var(--bg-color); }
         #skills, #education { background: var(--bg-alt); }
 
-        /* --- HERO SECTION --- */
         .hero { text-align: center; padding-top: 8rem; min-height: 90vh; }
         .hero h1 { 
             font-size: 4rem; 
@@ -92,7 +87,6 @@
             animation: fadeInUp 0.8s ease 0.2s both;
         }
 
-        /* Hero Buttons Wrapper */
         .hero-buttons {
             display: flex;
             justify-content: center;
@@ -101,7 +95,6 @@
             animation: fadeInUp 0.8s ease 0.3s both;
         }
 
-        /* --- BUTTONS --- */
         .btn { 
             display: inline-block; 
             padding: 0.9rem 2rem; 
@@ -130,7 +123,6 @@
             color: var(--text-dark);
         }
 
-        /* --- HEADINGS --- */
         .section-title { 
             font-size: 2.5rem; 
             text-align: center; 
@@ -145,7 +137,6 @@
             margin-bottom: 4rem;
         }
 
-        /* --- CARDS (Skills & Projects) --- */
         .skills-grid, .projects-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
@@ -170,7 +161,6 @@
         .skill-card h3 { color: var(--text-dark); margin-bottom: 1rem; font-size: 1.25rem; }
         .skill-card p { font-size: 0.95rem; color: #475569; }
 
-        /* --- PROJECT SPECIFIC --- */
         .project-card { display: flex; flex-direction: column; height: 100%; }
         .project-image { 
             font-size: 3rem; 
@@ -191,7 +181,6 @@
         }
         .project-btn:hover { border-bottom-color: var(--accent); }
 
-        /* --- TIMELINE (Work History) --- */
         .work-grid { display: flex; flex-direction: column; gap: 2rem; max-width: 900px; margin: 0 auto; }
         
         .timeline-card {
@@ -227,7 +216,6 @@
         .timeline-content ul { padding-left: 1.2rem; margin-top: 0.5rem; }
         .timeline-content li { margin-bottom: 0.3rem; font-size: 0.95rem; color: #475569; }
 
-        /* --- SOCIAL LINKS --- */
         .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
         .social-link { 
             color: var(--text-main); 
@@ -239,7 +227,6 @@
         }
         .social-link:hover { color: var(--accent); border-color: var(--accent); background: #eff6ff; }
 
-        /* --- FOOTER --- */
         .footer { 
             background: white; 
             color: #64748b; 
@@ -286,7 +273,7 @@
     <section id="home" class="section hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Hi, I'm Büşra 👋</h1>
+                <h1>Hi, I'm Büşra </h1>
                 <p class="subtitle">Software Engineer & AI Researcher & Data Scientist</p>
                 <p class="description">
                     I am a software engineer shaping the future with machine learning, data science, and data analysis projects, while also building innovative solutions as a full stack developer.
@@ -311,16 +298,16 @@
                     <p>I specialize in AI and Machine Learning, with hands-on experience in developing predictive models, training deep learning algorithms, and applying advanced data analysis techniques to solve real-world problems. My focus is on building intelligent systems that transform raw data into actionable insights, driving innovation and smarter decision-making.</p>
                 </div>
                 <div class="skill-card">
+                    <h3>Data Science & Analysis</h3>
+                    <p>Experienced in working with Python, SQL, and MATLAB for data analysis, preprocessing, and visualization. Skilled in applying statistical methods, handling large datasets, and leveraging machine learning frameworks such as TensorFlow, Keras, and PyTorch to extract insights and build predictive models.</p>
+                </div>
+                <div class="skill-card">
                     <h3>Full Stack Development</h3>
                     <p>I have strong experience in Full Stack Development, working with Java, C#, .NET, and ASP.NET to build scalable, secure, and high-performance applications. My expertise covers both frontend and backend development, including designing robust APIs, implementing efficient databases, and creating user-friendly interfaces that ensure seamless user experiences.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Software Engineering Principles</h3>
                     <p>Strong foundation in Software Development Life Cycle (SDLC), Object-Oriented Programming (OOP), and Unit Testing (JUnit). Focused on writing clean, maintainable, and scalable code while following best practices in software engineering.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Data Science & Analysis</h3>
-                    <p>Experienced in working with Python, SQL, and MATLAB for data analysis, preprocessing, and visualization. Skilled in applying statistical methods, handling large datasets, and leveraging machine learning frameworks such as TensorFlow, Keras, and PyTorch to extract insights and build predictive models.</p>
                 </div>
             </div>
         </div>
@@ -438,8 +425,8 @@
                 <div class="timeline-card timeline-content">
                     <h3>Erciyes University</h3>
                     <h4>Software Engineering (Eng.) - Bachelor Degree</h4>
-                    <span class="date">2022 - 2027</span>
-                    <p><strong>GPA: 3.15</strong></p>
+                    <span class="date">2023 - 2027</span>
+                    <p><strong>GPA: 3.28</strong></p>
                     <p>Focusing on Data Science, Algorithm Analysis, and Software Architectures.</p>
                 </div>
             </div>
@@ -481,7 +468,6 @@
     </footer>
 
     <script>
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -491,7 +477,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu
                     const navLinks = document.querySelector('.nav-links');
                     if (navLinks.style.display === 'flex') {
                          navLinks.style.display = 'none';
@@ -500,7 +485,6 @@
             });
         });
 
-        // Mobile menu toggle
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
@@ -520,7 +504,6 @@
             }
         });
 
-        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
